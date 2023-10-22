@@ -39,7 +39,7 @@ async def send_welcome(message: types.Message):
 #function of btc price
 @dp.message_handler(commands=['Bitcoin_price'])
 async def btc_price(message: types.Message):
-   await message.answer(text=currencies_price)
+   await message.answer(text=currencies_price(currencies))
  
 if __name__ == '__main__':
    executor.start_polling(dp, skip_updates=True)

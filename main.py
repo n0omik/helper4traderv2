@@ -17,7 +17,7 @@ def currencies_price(currencies):
     data = requests.get(url) 
     data = data.json() 
     j = j+1
-    print(f"{data['symbol']} price is {data['price']}") 
+    return(f"{data['symbol']} price is {data['price']}") 
 
 
 API_TOKEN = '6783402247:AAGLMtEeDpsKGgxY9PiT3BTxn-N4butoQ-k'

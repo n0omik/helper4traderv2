@@ -29,14 +29,14 @@ dp = Dispatcher(bot)
 #function of start
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
-   kb = [
-       [
-           types.KeyboardButton(text="/Bitcoin_price"),
-           types.KeyboardButton(text="А это?")
-       ],
-   ]
-   keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
-   await message.reply("Привет, я бот от Нумика, помогаю торговать на криптовалюте", reply_markup=keyboard)
+    kb = [
+        [
+            types.KeyboardButton(text="/Bitcoin_price"),
+            types.KeyboardButton(text="А это?")
+        ],
+    ]
+    keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
+    await message.reply("Привет, я бот от Нумика, помогаю торговать на криптовалюте", reply_markup=keyboard)
 
 #function of btc price
 @dp.message_handler(commands=['Bitcoin_price'])

@@ -2,13 +2,13 @@ import json
 import requests 
 from aiogram import Bot, Dispatcher, executor, types
 
-key = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+
   
 # running function to print btc crypto price
 def currencies_price(currencies):
     currencies = ["BTCUSDT"] 
-    url = key+currencies[j]   
-    data = requests.get(url) 
+    key = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+    data = requests.get(key) 
     data = data.json() 
     return(f"{data['symbol']} price is {data['price']}") 
 

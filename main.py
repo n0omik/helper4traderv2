@@ -26,6 +26,13 @@ API_TOKEN = '6783402247:AAGLMtEeDpsKGgxY9PiT3BTxn-N4butoQ-k'
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
+#function of btc price
+@dp.message_handler(commands=['Bitcoin_price'])
+async def btc_price(message: types.Message):
+    price_text = get_btc_price(currencies)
+    await message.answer(text=price_text)
+
+
 #function of start
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
@@ -38,11 +45,7 @@ async def send_welcome(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
     await message.reply("Привет, я бот от Нумика, помогаю торговать на криптовалюте", reply_markup=keyboard)
 
-#function of btc price
-@dp.message_handler(commands=['Bitcoin_price'])
-async def btc_price(message: types.Message):
-    price_text = get_btc_price(currencies)
-    await message.answer(text=price_text)
+
  
 if __name__ == '__main__':
    executor.start_polling(dp, skip_updates=True)

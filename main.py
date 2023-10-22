@@ -43,7 +43,7 @@ async def send_welcome(message: types.Message):
         ],
     ]
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
-    await message.reply("Привет, я бот от Нумика, помогаю торговать на криптовалюте", reply_markup=keyboard)
+    await message.reply("Привет, я бот от Нумика, помогаю торговать на криптовалюте, проверка связи!", reply_markup=keyboard)
 
 
  

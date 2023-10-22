@@ -2,15 +2,15 @@ import json
 import requests 
 from aiogram import Bot, Dispatcher, executor, types
 
-
+currencies = ["BTCUSDT"] 
   
 # running function to print btc crypto price
 def currencies_price(currencies):
-    currencies = ["BTCUSDT"] 
-    key = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
-    data = requests.get(key) 
-    data = data.json() 
-    return(f"{data['symbol']} price is {data['price']}") 
+    for currency in currencies:
+      key = f"https://api.binance.com/api/v3/ticker/price?symbol={currency}"
+      data = requests.get(key) 
+      data = data.json() 
+      print(f"{data['symbol']} price is {data['price']}") 
 
 #API TOKEN for telegram bot n0omik
 API_TOKEN = '6783402247:AAGLMtEeDpsKGgxY9PiT3BTxn-N4butoQ-k'

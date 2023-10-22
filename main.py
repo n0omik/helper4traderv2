@@ -12,12 +12,14 @@ from aiogram.types import Message
 currencies = ["BTCUSDT"] 
   
 # function of printing btc price
-def currencies_price(currencies):
+def get_btc_price(currencies):
+    prices = []
     for currency in currencies:
-      key = f"https://api.binance.com/api/v3/ticker/price?symbol={currency}"
-      data = requests.get(key) 
-      data = data.json() 
-      print(f"{data['symbol']} price is {data['price']}") 
+        key = f"https://api.binance.com/api/v3/ticker/price?symbol={currency}"
+        data = requests.get(key)
+        data = data.json()
+        prices.append(f"{data['symbol']} price is {data['price']}")
+    return "\n".join(prices)
 
 #API TOKEN for telegram bot n0omik
 API_TOKEN = '6783402247:AAGLMtEeDpsKGgxY9PiT3BTxn-N4butoQ-k'

@@ -29,7 +29,7 @@ dp = Dispatcher(bot)
 async def send_welcome(message: types.Message):
    kb = [
        [
-           types.KeyboardButton(text="Сможешь повторить это?"),
+           types.KeyboardButton(text="/Bitcoin_price"),
            types.KeyboardButton(text="А это?")
        ],
    ]
@@ -39,7 +39,7 @@ async def send_welcome(message: types.Message):
 #function of btc price
 @dp.message_handler(commands=['Bitcoin_price'])
 async def btc_price(message: types.Message):
-   await message.reply(currencies_price)
+   await message.answer(text=currencies_price)
  
 if __name__ == '__main__':
    executor.start_polling(dp, skip_updates=True)

@@ -3,18 +3,23 @@ import requests
 import asyncio
 import logging
 import sys
-from os import getenv
+import functions
+import config
 
+from os import getenv
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types import Message
-import functions
 
-Bot = Bot("6783402247:AAGLMtEeDpsKGgxY9PiT3BTxn-N4butoQ-k")
+
+#Setting bot with TOKEN
+Bot = Bot(config.TOKEN)
 dp = Dispatcher(Bot)
 
+#Getting list of liquid currencies for 24 hours
+list_of_liquid_currencies = functions.get_usdt_pairs()
 currencies = ["BTCUSDT","ETHUSDT","SOLUSDT"] 
   
 # parsing crypto prices
@@ -27,19 +32,19 @@ def get_crypto_price(currency):
     price = f"{currenciy_pair} price is {price}"
     return price
 
-# Function for /Bitcoin_price commandmessege
+# Messege handler /Bitcoin_price command
 @dp.message_handler(commands=['Bitcoin_price'])
 async def btc_price(message: types.Message):
     price_text = get_crypto_price('BTCUSDT')
     await message.answer(price_text)
 
-# Функция для /Etherium_price команды
+# Messege handler for /Etherium_price command
 @dp.message_handler(commands=['Etherium_price'])
 async def eth_price(message: types.Message):
     price_text = get_crypto_price('ETHUSDT')
     await message.answer(price_text)
 
-# Функция для /Solana_price команды
+# Messege handler for /Solana_price command
 @dp.message_handler(commands=['Solana_price'])
 async def sol_price(message: types.Message):
     price_text = get_crypto_price('SOLUSDT')
@@ -64,6 +69,9 @@ async def send_welcome(message: Message):
     kb = types.KeyboardButton(text="/Etherium_price")
     kb = types.KeyboardButton(text="/Solana_price")
     await message.reply("Привет, я бот от Нумика, помогаю торговать на криптовалюте, проверка связи!", reply_markup=kb)
+
+
+
 
 async def main():
     await dp.start_polling()

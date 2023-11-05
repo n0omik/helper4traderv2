@@ -67,6 +67,6 @@ def get_liquidity_instruments(symbols, volume):
 
 
 #Cheking of function
-get_current_price('BTCUSDT')
-get_currency_day_volume('BTCUSDT')
-get_liquidity_instruments(get_usdt_pairs(),100000000)
+#get_current_price('BTCUSDT')
+#get_currency_day_volume('BTCUSDT')
+#get_liquidity_instruments(get_usdt_pairs(),100000000)

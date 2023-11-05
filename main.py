@@ -23,31 +23,31 @@ list_of_liquid_currencies = functions.get_usdt_pairs()
 currencies = ["BTCUSDT","ETHUSDT","SOLUSDT"] 
   
 # parsing crypto prices
-def get_crypto_price(currency):
-    key = f"https://api.binance.com/api/v3/ticker/price?symbol={currency}"
-    data = requests.get(key)
-    data = data.json()
-    currenciy_pair = data['symbol']
-    price = round(float(data['price']),2)
-    price = f"{currenciy_pair} price is {price}"
-    return price
+# def get_crypto_price(currency):
+#     key = f"https://api.binance.com/api/v3/ticker/price?symbol={currency}"
+#     data = requests.get(key)
+#     data = data.json()
+#     currenciy_pair = data['symbol']
+#     price = round(float(data['price']),2)
+#     price = f"{currenciy_pair} price is {price}"
+#     return price
 
 # Messege handler /Bitcoin_price command
 @dp.message_handler(commands=['Bitcoin_price'])
 async def btc_price(message: types.Message):
-    price_text = get_crypto_price('BTCUSDT')
+    price_text = functions.get_current_price('BTCUSDT')
     await message.answer(price_text)
 
 # Messege handler for /Etherium_price command
 @dp.message_handler(commands=['Etherium_price'])
 async def eth_price(message: types.Message):
-    price_text = get_crypto_price('ETHUSDT')
+    price_text = functions.get_current_price('ETHUSDT')
     await message.answer(price_text)
 
 # Messege handler for /Solana_price command
 @dp.message_handler(commands=['Solana_price'])
 async def sol_price(message: types.Message):
-    price_text = get_crypto_price('SOLUSDT')
+    price_text = functions.get_current_price('SOLUSDT')
     await message.answer(price_text)
 
 # Function to handle button clicks

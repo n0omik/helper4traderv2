@@ -21,16 +21,6 @@ dp = Dispatcher(Bot)
 #Getting list of liquid currencies for 24 hours
 list_of_liquid_currencies = functions.get_usdt_pairs()
 currencies = ["BTCUSDT","ETHUSDT","SOLUSDT"] 
-  
-# parsing crypto prices
-# def get_crypto_price(currency):
-#     key = f"https://api.binance.com/api/v3/ticker/price?symbol={currency}"
-#     data = requests.get(key)
-#     data = data.json()
-#     currenciy_pair = data['symbol']
-#     price = round(float(data['price']),2)
-#     price = f"{currenciy_pair} price is {price}"
-#     return price
 
 # Messege handler /Bitcoin_price command
 @dp.message_handler(commands=['Bitcoin_price'])
@@ -69,8 +59,6 @@ async def send_welcome(message: Message):
     kb = types.KeyboardButton(text="/Etherium_price")
     kb = types.KeyboardButton(text="/Solana_price")
     await message.reply("Привет, я бот от Нумика, помогаю торговать на криптовалюте, проверка связи!", reply_markup=kb)
-
-
 
 
 async def main():

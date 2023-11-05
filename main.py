@@ -10,6 +10,7 @@ from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types import Message
+import functions
 
 Bot = Bot("6783402247:AAGLMtEeDpsKGgxY9PiT3BTxn-N4butoQ-k")
 dp = Dispatcher(Bot)

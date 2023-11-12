@@ -41,23 +41,23 @@ async def sol_price(message: types.Message):
     await message.answer(price_text)
 
 # Function to handle button clicks
-@dp.message_handler(lambda message: message in ["/Bitcoin_price", "/Etherium_price", "/Solana_price"])
+@dp.message_handler(lambda message: message in ["Bitcoin price", "Etherium price", "Solana price"])
 async def handle_button_click(message:Message):
     command = message.text
-    if command == "/Bitcoin_price":
+    if command == "Bitcoin price":
         await btc_price(message)
-    elif command == "/Etherium_price":
+    elif command == "Etherium price":
         await eth_price(message)
-    elif command == "/Solana_price":
+    elif command == "Solana price":
         await sol_price(message)
 
 # Function for the /start command
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: Message):
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    kb = types.KeyboardButton(text="/Bitcoin_price")
-    kb = types.KeyboardButton(text="/Etherium_price")
-    kb = types.KeyboardButton(text="/Solana_price")
+    kb = types.KeyboardButton(text="Bitcoin price")
+    kb = types.KeyboardButton(text="Etherium price")
+    kb = types.KeyboardButton(text="Solana price")
     await message.reply("Привет, я бот от Нумика, помогаю торговать на криптовалюте, проверка связи!", reply_markup=kb)
 
 

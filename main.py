@@ -19,23 +19,23 @@ Bot = Bot(config.TOKEN)
 dp = Dispatcher(Bot)
 
 #Getting list of liquid currencies for 24 hours
-list_of_liquid_currencies = functions.get_usdt_pairs()
+#list_of_liquid_currencies = functions.get_usdt_pairs()
 currencies = ["BTCUSDT","ETHUSDT","SOLUSDT"] 
 
 # Messege handler /Bitcoin_price command
-@dp.message_handler(commands=['Bitcoin_price'])
+@dp.message_handler(commands=['/Bitcoin_price'])
 async def btc_price(message: types.Message):
     price_text = functions.get_current_price('BTCUSDT')
     await message.answer(price_text)
 
 # Messege handler for /Etherium_price command
-@dp.message_handler(commands=['Etherium_price'])
+@dp.message_handler(commands=['/Etherium_price'])
 async def eth_price(message: types.Message):
     price_text = functions.get_current_price('ETHUSDT')
     await message.answer(price_text)
 
 # Messege handler for /Solana_price command
-@dp.message_handler(commands=['Solana_price'])
+@dp.message_handler(commands=['/Solana_price'])
 async def sol_price(message: types.Message):
     price_text = functions.get_current_price('SOLUSDT')
     await message.answer(price_text)

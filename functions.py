@@ -36,7 +36,7 @@ def get_currency_day_volume(currency):
         return text_error
 
 #Getting of list with USDT pairs
-async def get_usdt_pairs():
+def get_usdt_pairs():
     usdt_pairs = []
     url = f'{binance_api_url}/exchangeInfo'
     response = requests.get(url)
